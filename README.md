@@ -8,7 +8,7 @@ Develop | [![Build Status](https://img.shields.io/travis/GordonLesti/Lesti_Fpc/d
 
 ## Release Information
 
-*Lesti_Fpc 1.4.2*
+*Lesti_Fpc 1.4.5*
 
 ## System Requirements
 
@@ -19,7 +19,7 @@ Develop | [![Build Status](https://img.shields.io/travis/GordonLesti/Lesti_Fpc/d
 
 * Install with [modman](https://github.com/colinmollenhour/modman):
     * ```$ modman clone https://github.com/GordonLesti/Lesti_Fpc.git```
-* Install with [Magento Composer Installer](https://github.com/magento-hackathon/magento-composer-installer) and add a requirement `gordonlesti/lesti_fpc`
+* Install with [Magento Composer Installer](https://github.com/Cotya/magento-composer-installer) and add a requirement `gordonlesti/lesti_fpc`
 
         {
             "require": {
@@ -31,3 +31,7 @@ Develop | [![Build Status](https://img.shields.io/travis/GordonLesti/Lesti_Fpc/d
     * Download latest version [here](https://github.com/GordonLesti/Lesti_Fpc/archive/master.zip)
     * Unzip
     * Copy `app` directory into Magento
+
+## Configuration
+
+Admin panel - Config - System - Lesti FPC section

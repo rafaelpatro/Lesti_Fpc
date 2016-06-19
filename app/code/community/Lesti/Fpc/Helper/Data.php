@@ -77,6 +77,7 @@ class Lesti_Fpc_Helper_Data extends Lesti_Fpc_Helper_Abstract
             $request = Mage::app()->getRequest();
             $params = array('host' => $request->getServer('HTTP_HOST'),
                 'port' => $request->getServer('SERVER_PORT'),
+                'secure' => Mage::app()->getStore()->isCurrentlySecure(),
                 'full_action_name' => $this->getFullActionName(),
                 'ajax' => $request->isAjax(),
               );
@@ -241,5 +242,20 @@ class Lesti_Fpc_Helper_Data extends Lesti_Fpc_Helper_Abstract
         return $request->getRequestedRouteName() . $delimiter .
         $request->getRequestedControllerName() . $delimiter .
         $request->getRequestedActionName();
+    }
+
+    /**
+     * @param Mage_Core_Controller_Response_Http $response
+     * @return string
+     */
+    public function getContentType(\Mage_Core_Controller_Response_Http $response)
+    {
+        foreach ($response->getHeaders() as $header) {
+            if (isset($header['name']) && $header['name'] === 'Content-Type' && isset($header['value'])) {
+                return $header['value'];
+            }
+        }
+
+        return 'text/html; charset=UTF-8';
     }
 }
