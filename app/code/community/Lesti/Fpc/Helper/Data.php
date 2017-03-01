@@ -7,7 +7,7 @@
  * @link      https://github.com/GordonLesti/Lesti_Fpc
  * @package   Lesti_Fpc
  * @author    Gordon Lesti <info@gordonlesti.com>
- * @copyright Copyright (c) 2013-2014 Gordon Lesti (http://gordonlesti.com)
+ * @copyright Copyright (c) 2013-2016 Gordon Lesti (http://gordonlesti.com)
  * @license   http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  */
 
@@ -182,7 +182,7 @@ class Lesti_Fpc_Helper_Data extends Lesti_Fpc_Helper_Abstract
             $layeredNavigationAttributesCache = $cache->load($cacheId);
 
             if (!$layeredNavigationAttributesCache) {
-                $attributeCollection->addFieldToFilter($filterableField, true);
+                $attributeCollection->addFieldToFilter($filterableField, array('in' => array(1,2)));
                 foreach ($attributeCollection as $attribute) {
                     $layeredNavigationAttributes[] = $attribute->getAttributeCode();
                 }

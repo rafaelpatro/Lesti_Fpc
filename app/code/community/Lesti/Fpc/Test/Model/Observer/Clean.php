@@ -7,7 +7,7 @@
  * @link      https://github.com/GordonLesti/Lesti_Fpc
  * @package   Lesti_Fpc
  * @author    Gordon Lesti <info@gordonlesti.com>
- * @copyright Copyright (c) 2013-2014 Gordon Lesti (http://gordonlesti.com)
+ * @copyright Copyright (c) 2013-2016 Gordon Lesti (http://gordonlesti.com)
  * @license   http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  */
 
@@ -43,6 +43,17 @@ class Lesti_Fpc_Test_Model_Observer_Clean extends Lesti_Fpc_Test_TestCase
         sleep(2);
         $this->_cleanObserver->coreCleanCache();
         $this->assertFalse($this->_fpc->remove('fpc_old_id'));
+    }
+
+    /**
+     * @test
+     */
+    public function testAdminhtmlCacheFlushAll()
+    {
+        $data = new \Lesti_Fpc_Model_Fpc_CacheItem('fpc_old_data', time(), 'text/html');
+        $this->_fpc->save($data, 'fpc_id');
+        Mage::dispatchEvent('adminhtml_cache_flush_all');
+        $this->assertFalse($this->_fpc->remove('fpc_id'));
     }
 
     /**

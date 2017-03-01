@@ -8,14 +8,14 @@
  * @link      https://github.com/GordonLesti/Lesti_Fpc
  * @package   Lesti_Fpc
  * @author    Gordon Lesti <info@gordonlesti.com>
- * @copyright Copyright (c) 2013-2014 Gordon Lesti (http://gordonlesti.com)
+ * @copyright Copyright (c) 2013-2016 Gordon Lesti (http://gordonlesti.com)
  * @license   http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  */
 -->
 <config>
     <modules>
         <Lesti_Fpc>
-            <version>1.4.5</version>
+            <version>1.4.8</version>
         </Lesti_Fpc>
     </modules>
     <global>
@@ -112,6 +112,15 @@
                     </fpc_core_clean_cache>
                 </observers>
             </core_clean_cache>
+            <adminhtml_cache_flush_all>
+                <observers>
+                    <fpc_adminhtml_cache_flush_all>
+                        <class>fpc/observer_clean</class>
+                        <type>singleton</type>
+                        <method>adminhtmlCacheFlushAll</method>
+                    </fpc_adminhtml_cache_flush_all>
+                </observers>
+            </adminhtml_cache_flush_all>
             <cataloginventory_stock_item_save_after>
                 <observers>
                     <fpc_cataloginventory_stock_item_save_after>
@@ -140,6 +149,11 @@
                 </observers>
             </fpc_observer_collect_cache_tags>
         </events>
+        <catalogrule>
+            <related_cache_types>
+                <fpc />
+            </related_cache_types>
+        </catalogrule>
     </global>
     <frontend>
         <routers>
@@ -264,7 +278,8 @@ p,
 limit,
 dir,
 order,
-mode]]></uri_params>
+mode,
+/utm_.*/]]></uri_params>
                 <uri_params_layered_navigation>1</uri_params_layered_navigation>
                 <miss_uri_params><![CDATA[no_cache=/^1$/,
 limit=/^([0-9]+)|(all)$/,
